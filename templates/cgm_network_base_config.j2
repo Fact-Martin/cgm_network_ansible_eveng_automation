@@ -1,0 +1,18 @@
+
+! CGM_SITE Template Ansible Jinja2
+! Hostname and Domain Name already configured during Bootstrap of all the node 
+
+{% if interfaces_map is defined %}
+{% for interface in interfaces_map %}
+interface {{ interface.name }}
+ description {{ interface.description }}
+ no switchport
+ ip address {{ interface.ip }} {{ interface.mask }}
+ no shutdown
+
+{% endfor %}
+{% endif %}
+
+banner motd | \n*****************************************************\n  {{ tier_banner }}\n  All operations are audited and monitored.\n*****************************************************\n|
+
+

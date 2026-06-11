@@ -1,0 +1,9 @@
+---
+interfaces_map:
+  - name: "Ethernet1/2"
+    description: "Connected to CGM_CORE_02 interface Ethernet1/2"
+    ip: "10.101.0.13"
+    mask: "255.255.255.252"
+  
+
+
