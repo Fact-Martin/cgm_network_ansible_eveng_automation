@@ -1,0 +1,11 @@
+# Ansible operational tracking files
+*.retry
+*.log
+
+# vault password never commit to github
+.vault_pass
+vault_password.txt
+
+# Local environment variables text configurations never commit aswell
+.env
+.envrc
