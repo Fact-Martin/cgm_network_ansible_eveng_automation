@@ -1,0 +1,10 @@
+---
+# Lets configure Port-Channel 1 between Core switches
+port_channels:
+  - id: 1
+    description: "L3 EtherChannel to CGM_CORE_02"
+    ip: "10.101.0.17"
+    mask: "255.255.255.252"
+    members:
+      - "Ethernet0/2"
+      - "Ethernet0/3"
