@@ -30,3 +30,34 @@ exit
 {% endfor %}
 {% endfor %}
 {% endif %}
+
+{% if vlans_list is defined %}
+{% for vlan in vlans_list %}
+vlan {{ vlan.id  }}
+ name {{ vlan.name }}
+exit
+!
+{% endfor %}
+{% endif %}
+
+{% if l2_port_channels is defined %}
+{% for pc in l2_port_channels %}
+interface Port-channel{{ pc.id }}
+ description {{ pc.description }}
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan {{ pc.allowed_vlans }}
+ no shutdown
+exit
+!
+{% for member in pc.members %}
+interface {{ member }}
+ description Member of L2 Port-channel{{ pc.id }}
+ switchport
+ channel-group {{ pc.id }} mode active
+ no shutdown
+exit
+!
+{% endfor %}
+{% endfor %}
+{% endif %}

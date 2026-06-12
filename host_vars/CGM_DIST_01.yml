@@ -4,8 +4,23 @@ interfaces_map:
     description: "Connected to CGM_CORE_02 interface Ethernet1/1"
     ip: "10.101.0.30"
     mask: "255.255.255.252"
-  
 
+# Configure VLANs on Distribution Switch CGM_DIST_01
+vlans_list:
+  - id: 10
+    name: "CGM_FINANCE"
+  - id: 20
+    name: "CGM_IT" 
+  - id: 30
+    name: "CGM_OPERATIONS"
+
+l2_port_channels:
+  - id: 10
+    description: "L2 EtherChannel to CGM_DIST_02"
+    allowed_vlans: "10,20,30"
+    members:
+      - "Ethernet1/0"
+      - "Ethernet0/3"
 
 
 
