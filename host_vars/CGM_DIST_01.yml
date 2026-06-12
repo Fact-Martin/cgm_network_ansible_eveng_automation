@@ -22,5 +22,27 @@ l2_port_channels:
       - "Ethernet1/0"
       - "Ethernet0/3"
 
-
-
+# Configure SVIs and HSRP on Distribution Switch CGM_DIST_01
+svi_hsrp_list:
+  - vlan_id: 10
+    description: "GATEWAY FOR CGM_FINANCE"
+    physical_ip: "10.101.10.2"
+    mask: "255.255.255.0"
+    hsrp_group: 10
+    virtual_ip: "10.101.10.1"
+    hsrp_priority: 110
+  - vlan_id: 20
+    description: "GATEWAY FOR CGM_IT"
+    physical_ip: "10.101.20.2"
+    mask: "255.255.255.0"
+    hsrp_group: 20
+    virtual_ip: "10.101.20.1"
+    hsrp_priority: 110
+  - vlan_id: 30
+    description: "GATEWAY FOR CGM_OPERATIONS"
+    physical_ip: "10.101.30.2"
+    mask: "255.255.255.0"
+    hsrp_group: 30
+    virtual_ip: "10.101.30.1"
+    hsrp_priority: 110
+...

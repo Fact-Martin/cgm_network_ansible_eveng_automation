@@ -20,3 +20,4 @@
         state: present
       register: banner_status
 
+...

@@ -61,3 +61,19 @@ exit
 {% endfor %}
 {% endfor %}
 {% endif %}
+
+{% if svi_hsrp_list is defined %}
+{% for svi in svi_hsrp_list %}
+interface vlan {{ svi.vlan_id }}
+ description {{ svi.description }}
+ ip address {{ svi.physical_ip }} {{ svi.mask }}
+ standby version 2
+ standby {{ svi.hsrp_group }} ip {{ svi.virtual_ip }}
+ standby {{ svi.hsrp_group }} priority {{ svi.hsrp_priority }}
+ standby {{ svi.hsrp_group }} preempt
+ no shutdown
+exit
+!
+{% endfor %}
+{% endif %}
+
