@@ -71,6 +71,9 @@ interface vlan {{ svi.vlan_id }}
  standby {{ svi.hsrp_group }} ip {{ svi.virtual_ip }}
  standby {{ svi.hsrp_group }} priority {{ svi.hsrp_priority }}
  standby {{ svi.hsrp_group }} preempt
+ {% if svi.ospf_enable | default(false) %}
+ ip ospf {{ svi.ospf_process }} area {{ svi.ospf_area }}
+ {% endif %}
  no shutdown
 exit
 !

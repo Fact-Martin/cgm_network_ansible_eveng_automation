@@ -31,6 +31,9 @@ svi_hsrp_list:
     hsrp_group: 10
     virtual_ip: "10.101.10.1"
     hsrp_priority: 100
+    ospf_enable: true
+    ospf_process: 1
+    ospf_area: 0
   - vlan_id: 20
     description: "GATEWAY FOR CGM_IT"
     physical_ip: "10.101.20.3"
@@ -38,6 +41,9 @@ svi_hsrp_list:
     hsrp_group: 20
     virtual_ip: "10.101.20.1"
     hsrp_priority: 100
+    ospf_enable: true
+    ospf_process: 1
+    ospf_area: 0
   - vlan_id: 30
     description: "GATEWAY FOR CGM_OPERATIONS"
     physical_ip: "10.101.30.3"
@@ -45,4 +51,7 @@ svi_hsrp_list:
     hsrp_group: 30
     virtual_ip: "10.101.30.1"
     hsrp_priority: 100
+    ospf_enable: true
+    ospf_process: 1
+    ospf_area: 0
 ...
