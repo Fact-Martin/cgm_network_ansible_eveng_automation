@@ -1,0 +1,49 @@
+# Enable IPv4 routing
+ip routing
+
+# Configure Hostname
+hostname CGM_CORE_01
+
+# Configure domain name 
+ip domain name cgm.com 
+
+# Configure username
+username cathy privilege 15 secret cathygrace 
+
+# Generate Crypto keys
+Crypto key generate rsa general-keys modulus 2048
+
+# Configure vty line for SSH 
+line vty 0 4
+transport input ssh 
+login local
+exit
+
+# Configure IPv4 Addresses for bootstrapping
+interface e0/0
+no switchport
+ip address 10.101.0.21 255.255.255.252
+no shutdown 
+
+interface e0/1
+no switchport 
+ip address 10.101.0.6 255.255.255.252
+no shutdown
+
+interface e1/0
+no switchport
+ip address 10.101.0.10 255.255.255.252
+no shutdown
+
+interface e1/2
+no switchport
+ip address 10.101.0.25 255.255.255.252
+no shutdown
+
+# Configure IP Routing using OSPF and static routes
+router ospf 1
+network 10.101.0.0 0.0.0.255 area 0
+exit
+
+# write to NVRAM
+write memory
